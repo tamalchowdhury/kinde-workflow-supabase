@@ -26,7 +26,7 @@ export default async function (event: onUserTokenGeneratedEvent) {
     data: any;
   }>();
 
-  const response = await fetch(
+  const response = await kinde.fetch(
     "https://xvyhaoxzkelgkbpeeqbp.supabase.co/rest/v1/profiles",
     {
       method: "GET",
