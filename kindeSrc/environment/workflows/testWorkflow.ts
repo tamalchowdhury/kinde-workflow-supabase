@@ -15,6 +15,7 @@ export const workflowSettings: WorkflowSettings = {
     "kinde.accessToken": {},
     "kinde.localization": {},
     "kinde.fetch": {},
+    url: {},
   },
 };
 
@@ -28,9 +29,11 @@ export default async function (event: onUserTokenGeneratedEvent) {
   const response = await fetch(
     "https://xvyhaoxzkelgkbpeeqbp.supabase.co/rest/v1/profiles",
     {
+      method: "GET",
       headers: {
         apikey: SUPABASE_ANON_KEY,
         Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+        "Content-Type": "application/json",
       },
     }
   );
