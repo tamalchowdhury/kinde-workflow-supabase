@@ -4,10 +4,8 @@ import {
   WorkflowSettings,
   WorkflowTrigger,
   fetch,
+  getEnvironmentVariable,
 } from "@kinde/infrastructure";
-
-const SUPABASE_ANON_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh2eWhhb3h6a2VsZ2ticGVlcWJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzQ0MDkxODUsImV4cCI6MjA0OTk4NTE4NX0.7olGhmxP_QX2Tc9GnWroGuR-Zyj4MFUTTOKwXfnQyEA";
 
 export const workflowSettings: WorkflowSettings = {
   id: "addAccessTokenClaim",
@@ -16,11 +14,13 @@ export const workflowSettings: WorkflowSettings = {
     "kinde.accessToken": {},
     "kinde.localization": {},
     "kinde.fetch": {},
+    "kinde.env": {},
     url: {},
   },
 };
 
-export default async function (event: onUserTokenGeneratedEvent) {
+export default async function TestWorkflow(event: onUserTokenGeneratedEvent) {
+  const SUPABASE_ANON_KEY = getEnvironmentVariable("SUPABASE_ANON_KEY")?.value;
   const accessToken = accessTokenCustomClaims<{
     hello: string;
     ipAddress: string;
@@ -40,12 +40,9 @@ export default async function (event: onUserTokenGeneratedEvent) {
   );
 
   const profile = response.data.find(
-    (p) => p.kinde_id === event.context.user.id
+    (p: { kinde_id: string }) => p.kinde_id === event.context.user.id
   );
 
   accessToken.isSubscribed =
     profile?.is_on_monthly_subscription || profile?.paid_one_time_subscription;
-
-  accessToken.hello = "Hello there!";
-  accessToken.ipAddress = event.request.ip;
 }
