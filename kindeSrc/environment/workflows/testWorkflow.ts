@@ -38,9 +38,7 @@ export default async function (event: onUserTokenGeneratedEvent) {
       },
     }
   );
-  const data = await response.json();
-  console.log(data);
-  accessToken.data = data;
+  accessToken.data = response;
 
   accessToken.hello = "Hello there!";
   accessToken.ipAddress = event.request.ip;
