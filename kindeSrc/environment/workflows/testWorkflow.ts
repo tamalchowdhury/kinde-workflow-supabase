@@ -22,13 +22,12 @@ export const workflowSettings: WorkflowSettings = {
 export default async function TestWorkflow(event: onUserTokenGeneratedEvent) {
   const SUPABASE_ANON_KEY = getEnvironmentVariable("SUPABASE_ANON_KEY")?.value;
   const accessToken = accessTokenCustomClaims<{
-    hello: string;
-    ipAddress: string;
     isSubscribed: boolean;
   }>();
 
   const response = await fetch(
-    "https://xvyhaoxzkelgkbpeeqbp.supabase.co/rest/v1/profiles",
+    "https://xvyhaoxzkelgkbpeeqbp.supabase.co/rest/v1/profiles?kinde_id=eq." +
+      event.context.user.id,
     {
       method: "GET",
       headers: {
@@ -39,10 +38,12 @@ export default async function TestWorkflow(event: onUserTokenGeneratedEvent) {
     }
   );
 
-  const profile = response.data.find(
-    (p: { kinde_id: string }) => p.kinde_id === event.context.user.id
-  );
+  console.log(response);
 
-  accessToken.isSubscribed =
-    profile?.is_on_monthly_subscription || profile?.paid_one_time_subscription;
+  // const profile = response.data.find(
+  //   (p: { kinde_id: string }) => p.kinde_id === event.context.user.id
+  // );
+
+  // accessToken.isSubscribed =
+  //   profile?.is_on_monthly_subscription || profile?.paid_one_time_subscription;
 }
