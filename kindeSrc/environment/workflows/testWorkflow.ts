@@ -38,12 +38,10 @@ export default async function TestWorkflow(event: onUserTokenGeneratedEvent) {
     }
   );
 
-  console.log(response);
-
-  // const profile = response.data.find(
-  //   (p: { kinde_id: string }) => p.kinde_id === event.context.user.id
-  // );
-
-  // accessToken.isSubscribed =
-  //   profile?.is_on_monthly_subscription || profile?.paid_one_time_subscription;
+  if (response.data.length > 0) {
+    const profile = response.data[0];
+    accessToken.isSubscribed =
+      profile?.is_on_monthly_subscription ||
+      profile?.paid_one_time_subscription;
+  }
 }
