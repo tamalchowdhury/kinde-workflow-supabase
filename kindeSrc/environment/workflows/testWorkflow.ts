@@ -5,6 +5,9 @@ import {
   WorkflowTrigger,
 } from "@kinde/infrastructure";
 
+const SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh2eWhhb3h6a2VsZ2ticGVlcWJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzQ0MDkxODUsImV4cCI6MjA0OTk4NTE4NX0.7olGhmxP_QX2Tc9GnWroGuR-Zyj4MFUTTOKwXfnQyEA";
+
 export const workflowSettings: WorkflowSettings = {
   id: "addAccessTokenClaim",
   trigger: WorkflowTrigger.UserTokenGeneration,
@@ -26,8 +29,8 @@ export default async function (event: onUserTokenGeneratedEvent) {
     "https://xvyhaoxzkelgkbpeeqbp.supabase.co/rest/v1/profiles",
     {
       headers: {
-        apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
+        apikey: SUPABASE_ANON_KEY,
+        Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
       },
     }
   );
