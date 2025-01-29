@@ -3,6 +3,7 @@ import {
   accessTokenCustomClaims,
   WorkflowSettings,
   WorkflowTrigger,
+  fetch,
 } from "@kinde/infrastructure";
 
 const SUPABASE_ANON_KEY =
@@ -26,7 +27,7 @@ export default async function (event: onUserTokenGeneratedEvent) {
     data: any;
   }>();
 
-  const response = await kinde.fetch(
+  const response = await fetch(
     "https://xvyhaoxzkelgkbpeeqbp.supabase.co/rest/v1/profiles",
     {
       method: "GET",
