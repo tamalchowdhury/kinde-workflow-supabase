@@ -24,7 +24,7 @@ export default async function (event: onUserTokenGeneratedEvent) {
   const accessToken = accessTokenCustomClaims<{
     hello: string;
     ipAddress: string;
-    data: any;
+    isSubscribed: boolean;
   }>();
 
   const response = await fetch(
@@ -38,8 +38,11 @@ export default async function (event: onUserTokenGeneratedEvent) {
       },
     }
   );
-  // accessToken.data = response;
-  console.log(response);
+
+  const profile = data.find((p) => p.kinde_id === event.context.user.id);
+
+  accessToken.isSubscribed =
+    profile?.is_on_monthly_subscription || profile?.paid_one_time_subscription;
 
   accessToken.hello = "Hello there!";
   accessToken.ipAddress = event.request.ip;
