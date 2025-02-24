@@ -71,5 +71,6 @@ async function u(e) {
       (o == null ? void 0 : o.is_on_monthly_subscription) ||
       (o == null ? void 0 : o.paid_one_time_subscription);
   }
+  t.swag = "🚀";
 }
 export { u as default, l as workflowSettings };
