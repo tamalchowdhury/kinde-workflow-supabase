@@ -19,6 +19,7 @@ export const workflowSettings: WorkflowSettings = {
     "kinde.env": {},
     "kinde.auth": {},
     "kinde.idToken": {},
+    "kinde.m2mToken": {},
     url: {},
   },
 };
