@@ -32,14 +32,14 @@ export default async function EmailFilerWorkflow(
     clientId: "070e091120b841d38ba2785df755b91a",
     clientSecret: "mz3652i0elbQtNBPQHGm5OYyTAQXrQJxxlddOe4EYFuzXtnkqYuG",
   });
-  // const user = await api.get({
-  //   endpoint: "/user",
-  //   params: {
-  //     id: event.context.user.id,
-  //   },
-  // });
+  const user = await api.get({
+    endpoint: "/user",
+    params: {
+      id: event.context.user.id,
+    },
+  });
 
-  // console.log(user);
+  console.log(user);
 
   // const SUPABASE_ANON_KEY = getEnvironmentVariable("SUPABASE_ANON_KEY")?.value;
   // const accessToken = accessTokenCustomClaims<{
