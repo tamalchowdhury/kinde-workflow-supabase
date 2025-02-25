@@ -29,14 +29,14 @@ export default async function EmailFilerWorkflow(
 ) {
   console.log(event);
   const api = await createKindeAPI(event);
-  const user = await api.get({
-    endpoint: "/user",
-    params: {
-      id: event.context.user.id,
-    },
-  });
+  // const user = await api.get({
+  //   endpoint: "/user",
+  //   params: {
+  //     id: event.context.user.id,
+  //   },
+  // });
 
-  console.log(user);
+  // console.log(user);
 
   // const SUPABASE_ANON_KEY = getEnvironmentVariable("SUPABASE_ANON_KEY")?.value;
   // const accessToken = accessTokenCustomClaims<{
