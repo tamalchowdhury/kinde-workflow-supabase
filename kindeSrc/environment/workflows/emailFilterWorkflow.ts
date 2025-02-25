@@ -37,7 +37,9 @@ export default async function EmailFilerWorkflow(
     endpoint: `/user?id=${event.context.user.id}`,
   });
 
-  if (data.preferredEmail === "peter@kinde.com") {
+  console.log(data);
+
+  if (data.preferred_email === "peter@kinde.com") {
     denyAccess("You are not allowed to access this resource");
   }
   // const SUPABASE_ANON_KEY = getEnvironmentVariable("SUPABASE_ANON_KEY")?.value;
