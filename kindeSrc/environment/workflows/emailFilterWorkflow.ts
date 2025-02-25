@@ -1,6 +1,7 @@
 import {
   onUserTokenGeneratedEvent,
   WorkflowSettings,
+  idTokenCustomClaims,
 } from "@kinde/infrastructure";
 
 export const workflowSettings: WorkflowSettings = {
@@ -24,6 +25,7 @@ export default async function EmailFilerWorkflow(
   event: onUserTokenGeneratedEvent
 ) {
   console.log(event);
+  console.log(idTokenCustomClaims());
   // const SUPABASE_ANON_KEY = getEnvironmentVariable("SUPABASE_ANON_KEY")?.value;
   // const accessToken = accessTokenCustomClaims<{
   //   isSubscribed: boolean;
