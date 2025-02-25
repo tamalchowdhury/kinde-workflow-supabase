@@ -28,7 +28,10 @@ export default async function EmailFilerWorkflow(
   event: onUserTokenGeneratedEvent
 ) {
   console.log(event);
-  const api = await createKindeAPI(event);
+  const api = await createKindeAPI(event, {
+    clientId: "070e091120b841d38ba2785df755b91a",
+    clientSecret: "mz3652i0elbQtNBPQHGm5OYyTAQXrQJxxlddOe4EYFuzXtnkqYuG",
+  });
   // const user = await api.get({
   //   endpoint: "/user",
   //   params: {
