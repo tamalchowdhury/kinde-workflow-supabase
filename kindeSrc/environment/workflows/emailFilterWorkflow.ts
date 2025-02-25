@@ -33,10 +33,7 @@ export default async function EmailFilerWorkflow(
     clientSecret: "mz3652i0elbQtNBPQHGm5OYyTAQXrQJxxlddOe4EYFuzXtnkqYuG",
   });
   const user = await api.get({
-    endpoint: "/user",
-    params: {
-      id: event.context.user.id,
-    },
+    endpoint: `/user?id=${event.context.user.id}`,
   });
 
   console.log(user);
