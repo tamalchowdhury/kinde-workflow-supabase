@@ -1,7 +1,6 @@
 import {
   onUserTokenGeneratedEvent,
   WorkflowSettings,
-  WorkflowTrigger,
 } from "@kinde/infrastructure";
 
 export const workflowSettings: WorkflowSettings = {
@@ -10,7 +9,7 @@ export const workflowSettings: WorkflowSettings = {
   failurePolicy: {
     action: "stop",
   },
-  trigger: WorkflowTrigger.UserTokenGeneration,
+  trigger: "user:post_authentication",
   bindings: {
     "kinde.accessToken": {},
     "kinde.localization": {},
