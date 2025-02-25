@@ -17,6 +17,7 @@ export const workflowSettings: WorkflowSettings = {
     "kinde.fetch": {},
     "kinde.env": {},
     "kinde.auth": {},
+    "kinde.idToken": {},
     url: {},
   },
 };
