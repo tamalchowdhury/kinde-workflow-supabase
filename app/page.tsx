@@ -11,7 +11,8 @@ export default async function Home() {
   return (
     <div className="p-10">
       <div className="space-x-2 mb-4">
-        <LoginLink>Sign in</LoginLink>
+        <LoginLink orgCode="org_4e477d346b73">Sign in</LoginLink>
+        <LoginLink>Sign in to default org</LoginLink>
         <RegisterLink>Sign up</RegisterLink>
         <LogoutLink>Sign out</LogoutLink>
       </div>
