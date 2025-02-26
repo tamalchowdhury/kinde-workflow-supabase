@@ -39,7 +39,7 @@ export default async function EmailFilerWorkflow(
   console.log(data);
 
   if (
-    event.context.organization.code === "org_4e477d346b73" &&
+    event.request.authUrlParams.orgCode === "org_4e477d346b73" &&
     data.preferred_email === "peter@kinde.com"
   ) {
     denyAccess("You are not allowed to access this organization");
